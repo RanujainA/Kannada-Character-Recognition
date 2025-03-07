@@ -4,3 +4,5 @@ FinalYearProject/settings.py
 FinalYearProject/__pycache__/
 manage.py
 db.sqlite3
+FinalYearProject/asgi.py
+FinalYearProject/wsgi.py
