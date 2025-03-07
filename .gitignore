@@ -1,0 +1,6 @@
+application/__pycache__/
+application/migrations/
+FinalYearProject/settings.py
+FinalYearProject/__pycache__/
+manage.py
+db.sqlite3
