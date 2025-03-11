@@ -53,7 +53,7 @@
             <button type="submit">Predict</button>
         </form>
         {% if output %}
-            <p id="output">Predicted Class: {{output}}</p>
+            <p id="output">Predicted Class: {{output}} with Confidence Score: {{confidence}}</p>
         {% endif %}
         <p>Labels are from 0 to 656 where 0 represents 'ಅ', 1 represents 'ಆ', 2 represents 'ಇ', 3 represents 'ಈ' and so on. </p>
         <p>Note: This Project Predicts each and every character in kannada such as vowels signs, digits, conjuncts.</p>
