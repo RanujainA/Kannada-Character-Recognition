@@ -3,60 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Classification</title>
+    <title>Kannada Character Recognition</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4A90E2, #50B5A6);
+            color: #fff;
             text-align: center;
-            background-color: #f4f4f4;
-            padding: 50px;
-            display: flex;
-            justify-content: center;
+            margin: 0;
+            padding: 0;
         }
-        .container{
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 50%;
+        .container {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .custom-file-upload {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #fff;
+            color: #333;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+        .custom-file-upload:hover {
+            background: #ddd;
         }
         input[type="file"] {
-            margin: 20px 0;
+            display: none;
         }
         button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+            width: 100%;
+            padding: 12px;
             font-size: 16px;
+            font-weight: bold;
+            background: #F8B400;
+            color: #333;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
         }
         button:hover {
-            background-color: #0056b3;
+            background: #FF9500;
         }
-        #output {
+        .result-box {
             margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: red;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
+        .result-box h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Upload an Image for Prediction</h2>
+        <h1>Kannada Handwritten Character Recognition</h1>
+
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="file" id="imageUpload" name="file">
-            <br>
-            <button type="submit">Predict</button>
+
+            <!-- Custom File Upload -->
+            <label for="file-upload" class="custom-file-upload">
+                📂 Choose Image
+            </label>
+            <input id="file-upload" type="file" name="file" required>
+
+            <!-- Submit Button -->
+            <button type="submit">🔍 Predict Character</button>
         </form>
+
+        <!-- Display Prediction Result -->
         {% if output %}
-            <p id="output">Predicted Class: {{output}} with Confidence Score: {{confidence}}</p>
+        <div class="result-box">
+            <h2>Prediction Result</h2>
+            <p><strong>Predicted Character:</strong> {{ output }}</p>
+        </div>
         {% endif %}
-        <p>Labels are from 0 to 656 where 0 represents 'ಅ', 1 represents 'ಆ', 2 represents 'ಇ', 3 represents 'ಈ' and so on. </p>
-        <p>Note: This Project Predicts each and every character in kannada such as vowels signs, digits, conjuncts.</p>
     </div>
 </body>
 </html>
+
